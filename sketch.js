@@ -80,8 +80,10 @@ function draw() {
     beginShape();
     for (let i = 0; i < leftEyeIndices.length; i++) {
       const idx = leftEyeIndices[i];
-      const [x, y] = keypoints[idx];
-      vertex(x, y);
+      if (keypoints[idx]) { // 防呆：確保點存在
+        const [x, y] = keypoints[idx];
+        vertex(x, y);
+      }
     }
     endShape(CLOSE);
 
@@ -92,8 +94,10 @@ function draw() {
     beginShape();
     for (let i = 0; i < rightEyeIndices.length; i++) {
       const idx = rightEyeIndices[i];
-      const [x, y] = keypoints[idx];
-      vertex(x, y);
+      if (keypoints[idx]) { // 防呆：確保點存在
+        const [x, y] = keypoints[idx];
+        vertex(x, y);
+      }
     }
     endShape(CLOSE);
   }
